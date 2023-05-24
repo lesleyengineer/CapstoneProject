@@ -7,7 +7,9 @@ import json
 
 db = SQLAlchemy()
 
-database_path = os.environ['DATABASE_URL']
+# database_path = os.environ['DATABASE_URL']
+
+database_path = 'postgres://hollywood_casting_agency_m681_user:bbPt1ZB3oGcimsjjPOMPl3UeqEaa2fTK@dpg-chn0oum7avj3o34gjel0-a.oregon-postgres.render.com/hollywood_casting_agency_m681'
 
 
 def setup_db(app, database_path=database_path):

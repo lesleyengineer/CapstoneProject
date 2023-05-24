@@ -26,3 +26,17 @@ actors = [
     Actor(name="Miriam Margolyes", age=82, gender="female")
 
 ]
+
+new_movie = Movie(title='Harry Potter and the Final Battle', release_year=2023)
+new_actor = Actor(name='Brendan Gleeson', age=70, gender='male')
+
+new_movie_no_actor_id = new_movie.format
+new_movie_no_actor_id['actors'] = [9]
+
+new_actor_no_movie_id = new_actor.format
+new_actor_no_movie_id['movies'] = [10]
+
+update_movie = {
+    'title': 'Harry Potter and the Deadly Violin', 'release_year': 2023}
+update_actor = {
+    'name': 'Danielle Radcliffe', 'age': 80, 'gender': 'female'}
