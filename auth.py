@@ -3,8 +3,9 @@ from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
+import os
 
-AUTH0_DOMAIN = 'nanofs.uk.auth0.com'
+AUTH0_DOMAIN = os.environ.get('DATABASE_URL')
 ALGORITHMS = 'RS256'
 API_AUDIENCE = 'http://localhost:5000'
 

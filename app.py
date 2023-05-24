@@ -14,6 +14,8 @@ def create_app(test_config=None):
     setup_db(app)
     return app
 
+# postgres://hollywood_casting_agency_m681_user:bbPt1ZB3oGcimsjjPOMPl3UeqEaa2fTK@dpg-chn0oum7avj3o34gjel0-a.oregon-postgres.render.com/hollywood_casting_agency_m681
+
 
 app = create_app()
 
