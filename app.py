@@ -13,6 +13,12 @@ def create_app(test_config=None):
     CORS(app)
     setup_db(app)
 
+    @app.route('/')
+    def home_page():
+        return jsonify({
+            'success': True
+        })
+
     @app.route('/movies', methods=['GET'])
     @requires_auth('get:movies')
     def get_movies(jwt):
