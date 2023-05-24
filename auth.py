@@ -10,17 +10,13 @@ from dotenv import load_dotenv
 dotenv_path = join(dirname(__file__), 'login.env')
 load_dotenv = dotenv_path
 
-# auth_domain = os.environ.get('AUTH0_DOMAIN')
-# algorithms = os.environ.get('ALGORITHMS')
-# api_audience = os.environ.get('API_AUDIENCE')
+auth_domain = os.environ.get('AUTH0_DOMAIN')
+algorithms = os.environ.get('ALGORITHMS')
+api_audience = os.environ.get('API_AUDIENCE')
 
-# auth_domain = os.environ.get('AUTH0_DOMAIN')
-# algorithms = os.environ.get('ALGORITHMS')
-# api_audience = os.environ.get('API_AUDIENCE')
-
-AUTH0_DOMAIN = 'nanofs.uk.auth0.com'
-ALGORITHMS = 'RS256'
-API_AUDIENCE = 'http://localhost:5000'
+# AUTH0_DOMAIN = 'nanofs.uk.auth0.com'
+# ALGORITHMS = 'RS256'
+# API_AUDIENCE = 'http://localhost:5000'
 
 
 class AuthError(Exception):
@@ -71,8 +67,8 @@ def check_permissions(permission, payload):
 
 
 def verify_decode_jwt(token):
-    print(AUTH0_DOMAIN)
-    jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
+    print(auth_domain)
+    jsonurl = urlopen(f'https://{auth_domain}/.well-known/jwks.json')
     jwks = json.loads(jsonurl.read())
     unverified_header = jwt.get_unverified_header(token)
     rsa_key = {}
@@ -96,9 +92,9 @@ def verify_decode_jwt(token):
                     payload = jwt.decode(
                         token,
                         rsa_key,
-                        algorithms=ALGORITHMS,
-                        audience=API_AUDIENCE,
-                        issuer='https://' + AUTH0_DOMAIN + '/'
+                        algorithms=algorithms,
+                        audience=api_audience,
+                        issuer='https://' + auth_domain + '/'
                     )
 
                     return payload
