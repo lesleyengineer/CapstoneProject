@@ -5,9 +5,9 @@ from jose import jwt
 from urllib.request import urlopen
 import os
 
-AUTH0_DOMAIN = os.environ.get('DATABASE_URL')
-ALGORITHMS = 'RS256'
-API_AUDIENCE = 'http://localhost:5000'
+auth_domain = os.environ.get('AUTH0_DOMAIN')
+algorithms = os.environ.get('ALGORITHMS')
+api_audience = os.environ.get('API_AUDIENCE')
 
 
 class AuthError(Exception):

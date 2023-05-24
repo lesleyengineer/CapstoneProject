@@ -14,8 +14,6 @@ def create_app(test_config=None):
     setup_db(app)
     return app
 
-# postgres://hollywood_casting_agency_m681_user:bbPt1ZB3oGcimsjjPOMPl3UeqEaa2fTK@dpg-chn0oum7avj3o34gjel0-a.oregon-postgres.render.com/hollywood_casting_agency_m681
-
 
 app = create_app()
 
@@ -141,7 +139,7 @@ def delete_movie(jwt, movie_id):
 @requires_auth('delete:actors')
 def delete_actor(jwt, actor_id):
     try:
-        actor = Actor.query.filter(Movie.id == actor_id).one_or_none()
+        actor = Actor.query.filter(Actor.id == actor_id).one_or_none()
 
         if actor is None:
             abort(400)
@@ -176,7 +174,7 @@ def edit_movie(jwt, movie_id):
             movie.title = new_title
 
         if new_release_year:
-            movie.release_date = new_release_year
+            movie.release_year = new_release_year
 
         if actors:
             movie.actors = []
@@ -196,7 +194,8 @@ def edit_movie(jwt, movie_id):
             }
         )
 
-    except:
+    except Exception as e:
+        print(e)
         abort(400)
 
 
